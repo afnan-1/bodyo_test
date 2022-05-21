@@ -178,7 +178,7 @@ oauth2_settings.DEFAULTS[
 ] = "doctors.generators.random_token_generator"
 
 
-s
+
 # Google configuration
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ("SOCIAL_AUTH_GOOGLE_OAUTH2_KEY")
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ("SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET")
