@@ -104,11 +104,11 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        'NAME': os.environ["DB_NAME"],
-        'USER': os.environ["DB_USER"],
-        'PASSWORD': os.environ["DB_PASS"],
-        'HOST': os.environ["DB_HOST"],
-        'PORT': os.environ["DB_PORT"],
+        'NAME': os.environ.get("DB_NAME",''),
+        'USER': os.environ.get("DB_USER",''),
+        'PASSWORD': os.environ.get("DB_PASS",""),
+        'HOST': os.environ.get("DB_HOST",""),
+        'PORT': os.environ.get("DB_PORT",""),
     }
 }
 
@@ -180,8 +180,8 @@ oauth2_settings.DEFAULTS[
 
 
 # Google configuration
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ("SOCIAL_AUTH_GOOGLE_OAUTH2_KEY")
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ("SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET")
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get("SOCIAL_AUTH_GOOGLE_OAUTH2_KEY","")
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get("SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET","")
 
 # Define SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE to get extra permissions from Google.
 SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
@@ -191,7 +191,7 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
 SOCIAL_AUTH_GOOGLE_PROFILE_EXTRA_PARAMS = {
     "fields": "id, name, email, picture,gender,short_name"
 }
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = os.environ("SOCIAL_AUTH_LOGIN_REDIRECT_URL")
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = os.environ.get("SOCIAL_AUTH_LOGIN_REDIRECT_URL","")
 
 SOCIAL_AUTH_USER_FIELDS = [
     "email",
@@ -211,10 +211,10 @@ REST_FRAMEWORK = {
 }
 
 # AWS Settings
-AWS_ACCESS_KEY_ID=os.environ("AWS_ACCESS_KEY_ID")
-AWS_SECRET_ACCESS_KEY=os.environ("AWS_SECRET_ACCESS_KEY")
+AWS_ACCESS_KEY_ID=os.environ.get("AWS_ACCESS_KEY_ID","")
+AWS_SECRET_ACCESS_KEY=os.environ.get("AWS_SECRET_ACCESS_KEY","")
 
-AWS_STORAGE_BUCKET_NAME=os.environ("AWS_STORAGE_BUCKET_NAME")
+AWS_STORAGE_BUCKET_NAME=os.environ.get("AWS_STORAGE_BUCKET_NAME","")
 AWS_S3_SIGNATURE_VERSION = 's3v4'
 AWS_S3_REGION_NAME="eu-west-3"
 # AWS_S3_FILE_OVERWRITE = False
