@@ -3,7 +3,6 @@
     "cache_dependancies": true
   },
   "deploy": {
-    "module": "core.wsgi:application",
-    "managetasks": ["collectstatic --noinput"]
+    "module": "core.wsgi:application"
   }
 }
