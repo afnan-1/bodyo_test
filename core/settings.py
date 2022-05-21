@@ -11,17 +11,21 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-import environ
+# import environ
 import os
+from dotenv import load_dotenv
+load_dotenv()
+
+
 
 # https://github.com/wagnerdelima/drf-social-oauth2
 from oauth2_provider import settings as oauth2_settings
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-env = environ.Env()
+# env = environ.Env()
 # Take environment variables from .env file
-environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
+# environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 
 
 # Quick-start development settings - unsuitable for production
@@ -99,7 +103,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        "ENGINE": "django.db.backends.postgresql",
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
         'NAME': os.environ["DB_NAME"],
         'USER': os.environ["DB_USER"],
         'PASSWORD': os.environ["DB_PASS"],
@@ -174,10 +178,10 @@ oauth2_settings.DEFAULTS[
 ] = "doctors.generators.random_token_generator"
 
 
-
+s
 # Google configuration
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = env("SOCIAL_AUTH_GOOGLE_OAUTH2_KEY")
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = env("SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET")
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ("SOCIAL_AUTH_GOOGLE_OAUTH2_KEY")
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ("SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET")
 
 # Define SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE to get extra permissions from Google.
 SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
@@ -187,7 +191,7 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
 SOCIAL_AUTH_GOOGLE_PROFILE_EXTRA_PARAMS = {
     "fields": "id, name, email, picture,gender,short_name"
 }
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = env("SOCIAL_AUTH_LOGIN_REDIRECT_URL")
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = os.environ("SOCIAL_AUTH_LOGIN_REDIRECT_URL")
 
 SOCIAL_AUTH_USER_FIELDS = [
     "email",
@@ -207,10 +211,10 @@ REST_FRAMEWORK = {
 }
 
 # AWS Settings
-AWS_ACCESS_KEY_ID=env("AWS_ACCESS_KEY_ID")
-AWS_SECRET_ACCESS_KEY=env("AWS_SECRET_ACCESS_KEY")
+AWS_ACCESS_KEY_ID=os.environ("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY=os.environ("AWS_SECRET_ACCESS_KEY")
 
-AWS_STORAGE_BUCKET_NAME=env("AWS_STORAGE_BUCKET_NAME")
+AWS_STORAGE_BUCKET_NAME=os.environ("AWS_STORAGE_BUCKET_NAME")
 AWS_S3_SIGNATURE_VERSION = 's3v4'
 AWS_S3_REGION_NAME="eu-west-3"
 # AWS_S3_FILE_OVERWRITE = False
