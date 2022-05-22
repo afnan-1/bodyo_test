@@ -211,16 +211,21 @@ REST_FRAMEWORK = {
 }
 
 # AWS Settings
-AWS_ACCESS_KEY_ID=os.environ.get("AWS_ACCESS_KEY_ID","")
-AWS_SECRET_ACCESS_KEY=os.environ.get("AWS_SECRET_ACCESS_KEY","")
-
-AWS_STORAGE_BUCKET_NAME=os.environ.get("AWS_STORAGE_BUCKET_NAME","")
+AWS_ACCESS_KEY_ID="UBTXOLLB0H9JYN7EOQFF"
+AWS_SECRET_ACCESS_KEY="wPZcULjMHjkCGiJ9GdU3POZcTkZe56zJeXb4AyWW"
+AWS_S3_CUSTOM_DOMAIN="new-bucket.cellar-c2.services.clever-cloud.com"
+AWS_STORAGE_BUCKET_NAME="new-bucket"
 AWS_S3_SIGNATURE_VERSION = 's3v4'
-AWS_S3_REGION_NAME="eu-west-3"
-# AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
-AWS_S3_VERIFY = True
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+AWS_DEFAULT_ACL='public-read'
+AWS_LOCATION = 'new-bucket'
+AWS_S3_ENDPOINT_URL="https://new-bucket.cellar-c2.services.clever-cloud.com"
+AWS_S3_FILE_OVERWRITE = False
+
 AWS_QUERYSTRING_AUTH=False
+AWS_S3_HOST = "cellar-c2.services.clever-cloud.com"
+
 # storages
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
