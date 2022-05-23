@@ -11,7 +11,7 @@ Clone the project to a folder and enter it:
 ```
 git clone https://github.com/afnan-1/bodyo_test.git
 ```
-## Virtuale Environment
+## Virtual Environment
 python3 -m venv env
 env/bin/activate
 
