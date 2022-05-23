@@ -1,6 +1,6 @@
 # bodyo_test
 
-The Django app for the Nutrible Frontend.
+The Django app for the Bodyo
 
 ## Installation
 
