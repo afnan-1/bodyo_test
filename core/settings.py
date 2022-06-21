@@ -229,3 +229,4 @@ AWS_S3_HOST = os.environ.get("AWS_S3_HOST","")
 
 # storages
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+CORS_ALLOW_ALL_ORIGINS = True
